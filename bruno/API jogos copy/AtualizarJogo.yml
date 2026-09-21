@@ -1,0 +1,22 @@
+info:
+  name: AtualizarJogo
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:5050/api/jogos/3
+  body:
+    type: json
+    data: |-
+      {
+        "titulo": "Minecraft"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

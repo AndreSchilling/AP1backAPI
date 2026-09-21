@@ -1,0 +1,22 @@
+info:
+  name: ConfirmarDelete
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: |
+    00 - API no ar	GET {{baseUrl}}/	200 OK e uma mensagem.
+    01 - Listar	GET {{baseUrl}}/api/seu-recurso	200 OK e a lista em JSON.
+    02 - Buscar por id	GET {{baseUrl}}/api/seu-recurso/1	200 OK e um registro.
+    03 - Cadastrar	POST {{baseUrl}}/api/seu-recurso com Body → JSON	201 Created e o novo registro.
+    04 - Atualizar	PUT {{baseUrl}}/api/seu-recurso/{id-criado} com Body → JSON	200 OK e os dados atualizados.
+    05 - Remover	DELETE {{baseUrl}}/api/seu-recurso/{id-criado}	204 No Content.
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
