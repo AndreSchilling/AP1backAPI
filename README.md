@@ -25,6 +25,7 @@ Cliente API: app Bruno
 
 
 # Comandos
+dotnet build
 dotnet run 
 
 
@@ -61,4 +62,5 @@ Post:
 
 
 # Vídeo de demonstração
-LINK DO VÍDEO: ......................
+LINK DO VÍDEO: https://youtu.be/SxHDkz3nTUk
+
