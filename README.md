@@ -24,9 +24,9 @@ As migrations são aplicadas automaticamente quando a aplicação inicia (`Migra
 
 
 # URL
---urls http://localhost:5050
+--urls http://localhost:5107
 
-Interface web: http://localhost:5050/index.html
+Interface web: http://localhost:5107/index.html
 
 
 # Tabela
@@ -66,5 +66,5 @@ Post:
 
 
 # Vídeo de demonstração
-LINK DO VÍDEO: 
+LINK DO VÍDEO: https://youtu.be/KZa2bvBtirw
 
