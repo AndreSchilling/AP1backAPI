@@ -1,19 +1,9 @@
-# AVISO!!
-Dados ficam somente na memória local, pois não foi feito o uso de um banco de dados!
-
-
-
-
-
-
-
-
 # ApiJogos - Catálogo de Jogos em .NET 10
-API de gerenciamento de uma biblioteca de jogos.
+API de gerenciamento de uma biblioteca de jogos, com banco de dados SQLite (EF Core) e interface web integrada.
 
 
 ## Tema e Objetivo
-Criar um http capaz de fazer as operações de CRUD em uma biblioteca de jogos.
+Criar um http capaz de fazer as operações de CRUD em uma biblioteca de jogos, salvando os dados em um banco SQLite com Entity Framework Core. A interface web fica na pasta `wwwroot` e é entregue pela própria API (mesma origem).
 
 
 ## Requisitos
@@ -23,14 +13,20 @@ IDE / Editor: VS Code
 
 Cliente API: app Bruno
 
+Banco de dados: SQLite (arquivo `api-jogos.db`, criado automaticamente)
+
 
 # Comandos
 dotnet build
 dotnet run 
 
+As migrations são aplicadas automaticamente quando a aplicação inicia (`Migrate()`), então não é necessário rodar nenhum comando extra para criar o banco.
+
 
 # URL
 --urls http://localhost:5050
+
+Interface web: http://localhost:5050/index.html
 
 
 # Tabela
@@ -57,10 +53,18 @@ Post:
 }
 
 
+# Estrutura do projeto
+- `Program.cs`: rotas, Model (`JogoEntity`) e DbContext (`ApiDbContext`)
+- `Migrations`: migrations do EF Core que criam a tabela de jogos
+- `wwwroot`: frontend (HTML, CSS e JavaScript)
+- `bruno`: Collection do Bruno
+- `api-jogos.db`: banco SQLite
+
+
 # Caminho da Colection do Bruno
 /bruno
 
 
 # Vídeo de demonstração
-LINK DO VÍDEO: https://youtu.be/SxHDkz3nTUk
+LINK DO VÍDEO: 
 
