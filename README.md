@@ -9,7 +9,7 @@ Criar um http capaz de fazer as operações de CRUD em uma biblioteca de jogos, 
 ## Requisitos
 SDK: .NET 10 SDK
 
-IDE / Editor: VS Code	
+IDE / Editor: VS Code
 
 Cliente API: app Bruno
 
@@ -17,10 +17,12 @@ Banco de dados: SQLite (arquivo `api-jogos.db`, criado automaticamente)
 
 
 # Comandos
+```bash
 dotnet build
-dotnet run 
+dotnet run
+```
 
-As migrations são aplicadas automaticamente quando a aplicação inicia (`Migrate()`), então não é necessário rodar nenhum comando extra para criar o banco.
+O projeto usa **migrations** do EF Core. Elas são aplicadas automaticamente quando a aplicação inicia (`Migrate()`), então não é necessário rodar nenhum comando extra para criar o banco.
 
 
 # URL
@@ -42,29 +44,63 @@ Interface web: http://localhost:5107/index.html
 
 
 # JSON do PUT e do POST
-Put: 
+PUT:
+```json
 {
   "titulo": "Minecraft"
 }
+```
 
-Post:
+POST:
+```json
 {
   "titulo": "God of War"
 }
+```
 
 
 # Estrutura do projeto
-- `Program.cs`: rotas, Model (`JogoEntity`) e DbContext (`ApiDbContext`)
-- `Migrations`: migrations do EF Core que criam a tabela de jogos
-- `wwwroot`: frontend (HTML, CSS e JavaScript)
-- `bruno`: Collection do Bruno
-- `api-jogos.db`: banco SQLite
+```
+AP1back
+├── Data
+│   └── ApiDbContext.cs
+├── DTOs
+│   ├── JogoDto.cs
+│   └── JogoEntradaDto.cs
+├── Models
+│   └── JogosEntity.cs
+├── Migrations
+├── Properties
+├── bruno
+│   └── API jogos copy
+├── wwwroot
+├── Program.cs
+├── appsettings.json
+├── appsettings.Development.json
+└── AP1back.csproj
+```
+
+- `Program.cs`: inicialização da aplicação, registro do contexto, tratamento de exceções, CORS e rotas (endpoints).
+- `Models/`: a entidade `JogoEntity`, que representa a tabela de jogos no banco.
+- `Data/`: o `ApiDbContext`, que conecta a aplicação ao SQLite pelo Entity Framework Core.
+- `DTOs/`: `CriarJogoDto` (formato do JSON enviado no POST e no PUT) e `JogoDto` (formato de saída).
+- `Migrations/`: migrations do EF Core que criam a tabela de jogos.
+- `Properties/`: configurações de execução do projeto (`launchSettings.json`).
+- `wwwroot/`: frontend (HTML, CSS e JavaScript).
+- `bruno/`: Collection do Bruno com os testes da API.
+- `appsettings.json`: configurações, incluindo a string de conexão do banco.
+- `api-jogos.db`: banco SQLite, criado automaticamente ao iniciar a API (não é versionado).
 
 
 # Caminho da Colection do Bruno
-/bruno
+`bruno/API jogos copy`
+
+Para usar: abra o Bruno, escolha **Open Collection**, selecione essa pasta, escolha o ambiente local e confirme a porta 5107.
+
+
+
 
 
 # Vídeo de demonstração
-LINK DO VÍDEO: https://youtu.be/KZa2bvBtirw
+LINK DO VÍDEO: https://youtu.be/czAK1DEcvG4
 
