@@ -1,3 +1,7 @@
+using AP1back.Models;
+using AP1back.Dto;
+using AP1back.Data;
+
 using Microsoft.EntityFrameworkCore;
 
 
@@ -9,6 +13,17 @@ options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")
 
 
 var app = builder.Build();
+app.UseExceptionHandler(errorApp =>
+{
+    errorApp.Run(async context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+        context.Response.ContentType = "aplication/json";
+        await context.Response.WriteAsJsonAsync( new{ error = "Ocorreu um erro interno no servidor." } );
+    });
+});
+
+
 
 // cria o banco / aplica as migrations ao iniciar
 using (var scope = app.Services.CreateScope())
@@ -90,22 +105,3 @@ app.MapDelete("/api/jogos/{id:int}", async (int id, ApiDbContext db) =>
 
 app.Run();
 
-public record JogoDto(int Id, string Titulo);
-public record CriarJogoDto(string Titulo);
-
-class JogoEntity
-{
-    public int Id { get; set; }
-    public String jogo { get; set; } = string.Empty;
-    [System.ComponentModel.DataAnnotations.Schema.NotMapped]
-    public String Titulo { get => jogo; set => jogo = value; }
-}
-
-class ApiDbContext : DbContext
-{
-    public ApiDbContext(DbContextOptions <ApiDbContext> options) : base(options)
-    {
-        
-    }
-    public DbSet<JogoEntity> Jogos => Set<JogoEntity>();
- }
